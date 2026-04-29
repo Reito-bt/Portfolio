@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>My Portfolio</title>
+	<style>
+		:root {
+			--bg: #f7f9fc;
+			--surface: #ffffff;
+			--text: #1f2937;
+			--muted: #6b7280;
+			--accent: #2563eb;
+			--border: #e5e7eb;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.6;
+		}
+
+		.container {
+			width: min(1100px, 92%);
+			margin: 2rem auto 3rem;
+		}
+
+		.card {
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			padding: 1.25rem;
+		}
+
+		.hero {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 1.5rem;
+			align-items: center;
+			margin-bottom: 1.5rem;
+		}
+
+		.profile-image {
+			width: 180px;
+			height: 180px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 4px solid var(--border);
+			display: block;
+		}
+
+		h1, h2, h3 {
+			margin-top: 0;
+		}
+
+		p {
+			margin: 0.4rem 0;
+		}
+
+		.section-title {
+			margin: 2rem 0 0.8rem;
+			font-size: 1.35rem;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+			gap: 1rem;
+		}
+
+		.work-preview {
+			width: 100%;
+			border-radius: 10px;
+			border: 1px solid var(--border);
+			display: block;
+			margin-bottom: 0.75rem;
+			background: #000;
+		}
+
+		.work-link {
+			color: var(--accent);
+			font-weight: 600;
+			text-decoration: none;
+		}
+
+		.work-link:hover {
+			text-decoration: underline;
+		}
+
+		.muted {
+			color: var(--muted);
+			font-size: 0.95rem;
+		}
+
+		@media (max-width: 700px) {
+			.hero {
+				grid-template-columns: 1fr;
+				text-align: center;
+				justify-items: center;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="container">
+		<section class="hero card">
+			<img class="profile-image" src="assets/profile.jpg" alt="Your profile photo" />
+			<div>
+				<h1>Your Name</h1>
+				<p class="muted">
+					Phone: <a class="work-link" href="tel:+10000000000">+1 (000) 000-0000</a> |
+					Email: <a class="work-link" href="mailto:youremail@example.com">youremail@example.com</a> |
+					LinkedIn: <a class="work-link" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">linkedin.com/in/your-profile</a>
+				</p>
+				<p>
+					I am a [your role, e.g., web developer/designer/creator] passionate about building meaningful projects
+					that solve real problems.
+				</p>
+				<p>
+					<strong>My Goal:</strong> [Write 1-2 lines about your career goals, creative vision, or what impact you want to make.]
+				</p>
+				<p class="muted">Tip: Replace the profile image path and text with your own details.</p>
+			</div>
+		</section>
+
+		<h2 class="section-title">Video Projects</h2>
+		<section class="grid">
+			<article class="card">
+				<video class="work-preview" controls preload="metadata">
+					<source src="assets/videos/project-demo-1.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+				<h3>Project Video Title</h3>
+				<p class="muted">Short description of this video project and what it demonstrates.</p>
+			</article>
+
+			<article class="card">
+				<video class="work-preview" controls preload="metadata">
+					<source src="assets/videos/project-demo-2.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+				<h3>Another Video Project</h3>
+				<p class="muted">Brief details about your process, tools used, and project outcome.</p>
+			</article>
+		</section>
+
+		<h2 class="section-title">Image Projects (PNG / JPEG)</h2>
+		<section class="grid">
+			<article class="card">
+				<img class="work-preview" src="assets/images/project-image-1.png" alt="Project image one" />
+				<h3>Image Project Title</h3>
+				<p class="muted">Description of this image-based work and the goal behind it.</p>
+			</article>
+
+			<article class="card">
+				<img class="work-preview" src="assets/images/project-image-2.jpg" alt="Project image two" />
+				<h3>Second Image Project</h3>
+				<p class="muted">Add context about your design choices, audience, or results.</p>
+			</article>
+		</section>
+
+		<h2 class="section-title">Project Links</h2>
+		<section class="grid">
+			<article class="card">
+				<h3><a class="work-link" href="https://example.com/project-1" target="_blank" rel="noopener noreferrer">Project Link 1</a></h3>
+				<p class="muted">Description of the linked project and why it matters.</p>
+			</article>
+
+			<article class="card">
+				<h3><a class="work-link" href="https://example.com/project-2" target="_blank" rel="noopener noreferrer">Project Link 2</a></h3>
+				<p class="muted">Brief summary of this project, your role, and outcomes.</p>
+			</article>
+		</section>
+	</main>
+</body>
+</html>
