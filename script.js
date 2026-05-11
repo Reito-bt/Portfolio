@@ -16,10 +16,12 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 const wireStorageVideoSource = async (sourceElement) => {
-	const storagePath = sourceElement.dataset.storagePath;
-	if (!storagePath) {
+	const storagePathRaw = sourceElement.dataset.storagePath;
+	if (!storagePathRaw) {
 		return;
 	}
+
+	const storagePath = storagePathRaw.trim();
 
 	try {
 		const downloadUrl = await getDownloadURL(ref(storage, storagePath));
@@ -29,7 +31,8 @@ const wireStorageVideoSource = async (sourceElement) => {
 			video.load();
 		}
 	} catch (error) {
-		console.warn(`Falling back to local video source for ${storagePath}`, error);
+		console.error(`Failed to load storage video '${storagePath}':`, error);
+		console.warn(`Falling back to existing src for ${storagePath}`);
 	}
 };
 
