@@ -161,10 +161,16 @@ p {
 }
 
 .section-title {
-	margin: 0;
-	font-size: 1.35rem;
+	margin: 0 0 1.5rem 0;
+	font-size: 2rem;
+	font-weight: 700;
 	letter-spacing: 0.04em;
-	color: #d7f7ff;
+	background: linear-gradient(90deg, var(--accent-2), var(--accent), var(--accent-2));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-shadow: 0 0 30px rgba(49, 208, 255, 0.2);
+	filter: drop-shadow(0 0 20px rgba(99, 247, 184, 0.15));
 }
 
 .grid {
@@ -174,7 +180,39 @@ p {
 }
 
 .video-grid {
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-columns: 1fr;
+}
+
+.video-grid .card {
+	display: flex;
+	gap: 2rem;
+	align-items: stretch;
+	padding: 2rem;
+}
+
+.video-grid .card > div {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.video-grid .card .work-preview {
+	flex: 0 1 auto;
+	max-width: 500px;
+	height: auto;
+	object-fit: contain;
+	border-radius: 12px;
+}
+
+.video-grid .card h3 {
+	margin: 0 0 0.75rem 0;
+	font-size: 1.35rem;
+}
+
+.video-grid .card p {
+	margin: 0;
+	color: var(--muted);
 }
 
 .software-section {
@@ -260,6 +298,84 @@ p {
 .carousel-dot.is-active {
 	background: linear-gradient(90deg, var(--accent), var(--accent-2));
 	box-shadow: 0 0 12px rgba(49, 208, 255, 0.3);
+}
+
+/* Knowledge Tree styles */
+.knowledge-tree {
+	margin-top: 1rem;
+}
+.kt-list {
+	list-style: none;
+	padding: 0;
+ 	display: grid;
+ 	gap: 0.75rem;
+}
+.kt-item {
+ 	border-radius: 12px;
+ 	overflow: hidden;
+ 	background: linear-gradient(180deg, rgba(8,19,33,0.6), rgba(6,14,26,0.6));
+ 	border: 1px solid rgba(90,176,217,0.08);
+}
+.kt-header {
+ 	width: 100%;
+ 	display: flex;
+ 	align-items: center;
+ 	justify-content: space-between;
+ 	gap: 1rem;
+ 	background: transparent;
+ 	border: 0;
+ 	padding: 0.9rem 1rem;
+ 	color: var(--text);
+ 	cursor: pointer;
+ 	font-weight: 600;
+}
+.kt-title {
+ 	font-family: "IBM Plex Mono", monospace;
+ 	font-size: 1.05rem;
+}
+.kt-level {
+ 	font-size: 0.9rem;
+ 	color: var(--muted);
+}
+.kt-toggle {
+ 	color: var(--accent);
+ 	transition: transform 180ms ease;
+}
+.kt-branches {
+ 	max-height: 0;
+ 	overflow: hidden;
+ 	transition: max-height 260ms ease, padding 200ms ease;
+ 	padding: 0 1rem;
+ 	background: linear-gradient(180deg, rgba(4,16,29,0.02), transparent);
+}
+.kt-branches ul {
+ 	list-style: none;
+ 	margin: 0.65rem 0;
+ 	padding: 0;
+ 	display: grid;
+ 	gap: 0.5rem;
+}
+.kt-branches li {
+ 	display: flex;
+ 	justify-content: space-between;
+ 	align-items: center;
+ 	padding: 0.35rem 0;
+ 	border-bottom: 1px dashed rgba(255,255,255,0.03);
+}
+.skill-name { color: #d7e7f3; }
+.skill-badge {
+ 	background: rgba(49,208,255,0.08);
+ 	color: var(--accent-2);
+ 	padding: 0.25rem 0.6rem;
+ 	border-radius: 999px;
+ 	font-size: 0.8rem;
+}
+.kt-item.expanded .kt-toggle {
+ 	transform: rotate(90deg);
+}
+.kt-item.expanded .kt-branches {
+ 	max-height: 240px;
+ 	padding: 0.6rem 1rem 0.9rem 1rem;
 }
 
 .contact-section {
