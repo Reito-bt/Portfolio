@@ -184,35 +184,39 @@ p {
 }
 
 .video-grid .card {
-	display: flex;
-	gap: 2rem;
-	align-items: stretch;
-	padding: 2rem;
+	display: grid;
+	gap: 1rem;
+	align-items: start;
+	padding: 1.5rem;
 }
 
-.video-grid .card > div {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+.project-card {
+	text-decoration: none;
 }
 
 .video-grid .card .work-preview {
-	flex: 0 1 auto;
-	max-width: 500px;
+	width: 100%;
 	height: auto;
 	object-fit: contain;
 	border-radius: 12px;
+	max-width: none;
 }
 
-.video-grid .card h3 {
-	margin: 0 0 0.75rem 0;
+.project-title {
+	margin: 0;
 	font-size: 1.35rem;
 }
 
-.video-grid .card p {
-	margin: 0;
-	color: var(--muted);
+.project-link {
+	color: var(--text);
+	text-decoration: none;
+	transition: color 160ms ease, text-shadow 160ms ease;
+}
+
+.project-link:hover {
+	color: var(--accent-2);
+	text-shadow: 0 0 14px rgba(99, 247, 184, 0.2);
+	text-decoration: underline;
 }
 
 .software-section {
@@ -481,6 +485,101 @@ p {
 	text-shadow: 0 0 14px rgba(49, 208, 255, 0.28);
 }
 
+.project-page {
+	display: grid;
+	gap: 1.25rem;
+	padding: 2rem 0 3rem;
+}
+
+.project-back-link {
+	justify-self: start;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	padding: 0.7rem 1rem;
+	border-radius: 999px;
+	border: 1px solid rgba(49, 208, 255, 0.2);
+	background: rgba(4, 16, 29, 0.72);
+	color: var(--text);
+	text-decoration: none;
+	font-family: "IBM Plex Mono", Consolas, monospace;
+	font-size: 0.88rem;
+	transition: transform 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.project-back-link:hover {
+	transform: translateY(-1px);
+	border-color: rgba(49, 208, 255, 0.45);
+	color: var(--accent-2);
+}
+
+.project-hero {
+	display: grid;
+	gap: 0.6rem;
+}
+
+.project-hero h1 {
+	margin-bottom: 0;
+	font-size: clamp(2rem, 5vw, 3.4rem);
+	line-height: 1.02;
+}
+
+.project-section {
+	display: grid;
+	gap: 1rem;
+}
+
+.project-list {
+	margin: 0;
+	padding-left: 1.2rem;
+	display: grid;
+	gap: 0.65rem;
+}
+
+.project-list li {
+	color: #d7e7f3;
+}
+
+.detail-video {
+	max-width: 100%;
+}
+
+/* Media gallery for project detail pages */
+.media-gallery {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.media-item {
+	aspect-ratio: 4 / 3;
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid var(--border);
+	background: #04101d;
+	display: block;
+}
+
+/* Modifier for portrait-oriented media (taller tiles for posters) */
+.media-item--portrait {
+    aspect-ratio: 2 / 3;
+}
+
+.media-item--portrait img,
+.media-item--portrait video {
+    object-fit: contain;
+    background: #000;
+}
+
+.media-item img,
+.media-item video {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	background: #000;
+}
+
 .muted {
 	color: var(--muted);
 	font-size: 0.95rem;
@@ -497,6 +596,10 @@ p {
 }
 
 @media (max-width: 700px) {
+	.container {
+		width: min(1100px, 94%);
+	}
+
 	.hero-content {
 		padding-top: 4.5rem;
 		padding-bottom: 4.5rem;
@@ -504,6 +607,8 @@ p {
 
 	.hero-content h1 {
 		max-width: 100%;
+		font-size: clamp(2.2rem, 12vw, 3.4rem);
+		text-wrap: balance;
 	}
 
 	.hero {
@@ -512,12 +617,55 @@ p {
 		justify-items: center;
 	}
 
+	.hero-copy {
+		justify-items: center;
+	}
+
+	.hero-goal {
+		width: 100%;
+		max-width: 32rem;
+	}
+
 	.content-stack {
 		padding-top: 2rem;
+		gap: 1.5rem;
 	}
 
 	.video-grid {
 		grid-template-columns: 1fr;
+	}
+
+	.video-grid .card {
+		padding: 1.15rem;
+	}
+
+	.video-grid .card .work-preview {
+		max-width: none;
+	}
+
+	.section-title {
+		font-size: 1.6rem;
+		margin-bottom: 1rem;
+	}
+
+	.kt-header {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem 0.75rem;
+	}
+
+	.kt-level {
+		margin-left: auto;
+	}
+
+	.kt-toggle {
+		margin-left: 0;
+	}
+
+	.kt-title {
+		flex: 1 1 100%;
 	}
 
 	.carousel-controls {
@@ -536,5 +684,48 @@ p {
 	.contact-button {
 		width: 100%;
 		justify-self: stretch;
+	}
+}
+
+@media (max-width: 480px) {
+	body {
+		line-height: 1.55;
+	}
+
+	.hero-content {
+		padding-top: 3.5rem;
+		padding-bottom: 3.5rem;
+	}
+
+	.hero-copy {
+		font-size: 0.98rem;
+	}
+
+	.eyebrow {
+		font-size: 0.74rem;
+		letter-spacing: 0.14em;
+	}
+
+	.content-stack {
+		padding-bottom: 2.5rem;
+	}
+
+	.form-field input,
+	.form-field textarea {
+		padding: 0.85rem 0.9rem;
+	}
+
+	.contact-button {
+		padding: 0.85rem 1.1rem;
+	}
+
+	.kt-branches li {
+		gap: 0.75rem;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.skill-badge {
+		align-self: flex-start;
 	}
 }

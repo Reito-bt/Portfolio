@@ -36,9 +36,31 @@ const wireStorageVideoSource = async (sourceElement) => {
 	}
 };
 
-const storageVideoSources = document.querySelectorAll('[data-storage-path]');
+const wireStorageImage = async (imgElement) => {
+	const storagePathRaw = imgElement.dataset.storagePath;
+	if (!storagePathRaw) {
+		return;
+	}
+
+	const storagePath = storagePathRaw.trim();
+
+	try {
+		const downloadUrl = await getDownloadURL(ref(storage, storagePath));
+		imgElement.src = downloadUrl;
+	} catch (error) {
+		console.error(`Failed to load storage image '${storagePath}':`, error);
+		console.warn(`Falling back to existing src for ${storagePath}`);
+	}
+};
+
+const storageVideoSources = document.querySelectorAll('source[data-storage-path]');
 storageVideoSources.forEach(sourceElement => {
 	void wireStorageVideoSource(sourceElement);
+});
+
+const storageImages = document.querySelectorAll('img[data-storage-path]');
+storageImages.forEach(imgElement => {
+	void wireStorageImage(imgElement);
 });
 
 (() => {
