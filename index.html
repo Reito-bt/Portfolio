@@ -11,6 +11,20 @@
 		<script src="script.js" type="module"></script>
 </head>
 <body>
+	<header class="site-header">
+		<div class="header-content container">
+			<h1 class="site-logo">MR</h1>
+			<nav class="social-links">
+				<a href="https://github.com/Reito-bt" target="_blank" rel="noopener noreferrer" title="GitHub">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.002 12.002 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+				</a>
+				<a href="https://www.linkedin.com/in/rasuli-muhammadrasuli" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+				</a>
+			</nav>
+		</div>
+	</header>
+
 	<section class="hero-banner">
 		<video class="hero-video" autoplay muted loop playsinline>
 			<source src="Assets\Videos\STLD_Asg1_S10265971K_MuhammadRasuliBinRosli.mp4" data-storage-path="public_videos/STLD_Asg1_S10265971K_MuhammadRasuliBinRosli.mp4" type="video/mp4" />
@@ -22,6 +36,35 @@
 			<div class="hero-copy">
 				<p class="hero-description">I am a Year 3 student pursuing a diploma in Immersive Media in Ngee Ann Polytechnic and I am currently seeking an internship opportunity. I am passionate about creating immersive experiences and constantly strive to improve my skills in this field.</p>
 				<p class="hero-goal">End Goal: Build a video game that brings my creative vision to life and provides an engaging experience for all players.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section card">
+		<div class="container">
+			<div class="about-content">
+				<div class="about-text">
+					<h2 class="section-title">About Me</h2>
+					<p class="about-description">I'm a Year 3 Immersive Media student at Ngee Ann Polytechnic passionate about game development and interactive experiences. My journey spans game design, 3D modeling, audio production, and full-stack web development. I'm actively seeking an internship to contribute to a dynamic team while advancing my skills in game development.</p>
+					<p class="about-secondary">Currently exploring <strong>Unity game development</strong>, <strong>Firebase backend solutions</strong>, and <strong>immersive storytelling</strong>. I thrive in collaborative environments where creativity meets technical excellence.</p>
+					<div class="about-actions">
+						<a href="https://drive.google.com/uc?export=download&id=1J_ZG3d9Sd6a6kKFm0jlSBYnMf1qvV2Y2" download class="cv-button" target="_blank" rel="noopener noreferrer">📄 Download Resume</a>
+					</div>
+				</div>
+				<div class="about-stats">
+					<div class="stat-item">
+						<span class="stat-number">3+</span>
+						<span class="stat-label">Years Learning</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number">10+</span>
+						<span class="stat-label">Projects Done</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number">6</span>
+						<span class="stat-label">Core Skills</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -114,28 +157,32 @@
 		<section class="contact-section card">
 			<h2 class="section-title">Contact Me</h2>
 			<p class="muted contact-intro">Send a message using the form below and I’ll get back to you.</p>
-			<form class="contact-form">
+			<form class="contact-form" id="contact-form">
 				<div class="form-row">
 					<div class="form-field">
 						<label for="contact-name">Name / Organisation Name</label>
-						<input id="contact-name" name="contact-name" type="text" placeholder="Enter your name or organisation" />
+						<input id="contact-name" name="contact-name" type="text" placeholder="Enter your name or organisation" required aria-label="Your name or organisation" />
 					</div>
 
 					<div class="form-field">
 						<label for="contact-title">Title</label>
-						<input id="contact-title" name="contact-title" type="text" placeholder="Enter a subject title" />
+						<input id="contact-title" name="contact-title" type="text" placeholder="Enter a subject title" required aria-label="Message subject" />
 					</div>
 				</div>
 
 				<div class="form-field">
 					<label for="contact-description">Description</label>
-					<textarea id="contact-description" name="contact-description" rows="6" placeholder="Write your message here"></textarea>
+					<textarea id="contact-description" name="contact-description" rows="6" placeholder="Write your message here" required aria-label="Message content"></textarea>
 				</div>
 
-				<button class="contact-button" type="submit">Submit</button>
+				<div class="form-feedback" id="form-feedback"></div>
+
+				<button class="contact-button" type="submit" id="contact-submit">Submit</button>
 			</form>
 		</section>
 	</main>
 
 </body>
 </html>
+
+

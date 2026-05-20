@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getDownloadURL, getStorage, ref } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,6 +15,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
+const db = getFirestore(app);
 
 const wireStorageVideoSource = async (sourceElement) => {
 	const storagePathRaw = sourceElement.dataset.storagePath;
@@ -142,4 +144,72 @@ storageImages.forEach(imgElement => {
 			}
 		});
 	});
+})();
+
+// Contact Form Submission Handler
+(() => {
+	const form = document.getElementById('contact-form');
+	const feedbackEl = document.getElementById('form-feedback');
+	const submitBtn = document.getElementById('contact-submit');
+	
+	if (!form) return;
+
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		
+		// Get form values
+		const name = document.getElementById('contact-name').value.trim();
+		const title = document.getElementById('contact-title').value.trim();
+		const description = document.getElementById('contact-description').value.trim();
+
+		// Validate
+		if (!name || !title || !description) {
+			showFeedback('Please fill in all fields', 'error');
+			return;
+		}
+
+		// Disable submit button and show loading state
+		submitBtn.disabled = true;
+		const originalText = submitBtn.textContent;
+		submitBtn.textContent = 'Sending...';
+
+		try {
+			// Add to Firestore
+			await addDoc(collection(db, 'contact_submissions'), {
+				name,
+				title,
+				description,
+				timestamp: serverTimestamp(),
+				userAgent: navigator.userAgent,
+			});
+
+			// Clear form
+			form.reset();
+			showFeedback("✓ Message sent successfully! I'll get back to you soon.", 'success');
+			
+			// Reset button after delay
+			setTimeout(() => {
+				submitBtn.disabled = false;
+				submitBtn.textContent = originalText;
+			}, 3000);
+		} catch (error) {
+			console.error('Error sending message:', error);
+			showFeedback('Failed to send message. Please try again later.', 'error');
+			submitBtn.disabled = false;
+			submitBtn.textContent = originalText;
+		}
+	});
+
+	function showFeedback(message, type) {
+		feedbackEl.textContent = message;
+		feedbackEl.className = `form-feedback form-feedback--${type}`;
+		
+		// Auto-dismiss success message after 5 seconds
+		if (type === 'success') {
+			setTimeout(() => {
+				feedbackEl.textContent = '';
+				feedbackEl.className = 'form-feedback';
+			}, 5000);
+		}
+	}
 })();
