@@ -203,6 +203,67 @@ body::before {
 	letter-spacing: 0.06em;
 }
 
+/* Current Project Section */
+.current-project-section {
+	margin-bottom: 3rem;
+	position: relative;
+	z-index: 10;
+}
+
+.current-project-inner {
+	padding: 2.5rem 0;
+	display: grid;
+	gap: 1.1rem;
+}
+
+.current-project-header {
+	display: grid;
+	gap: 0.6rem;
+}
+
+.status-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	width: fit-content;
+	padding: 0.4rem 1rem;
+	border-radius: 999px;
+	background: linear-gradient(90deg, rgba(255, 159, 10, 0.18), rgba(255, 86, 86, 0.18));
+	border: 1px solid rgba(255, 159, 10, 0.35);
+	color: #ffb454;
+	font-family: "IBM Plex Mono", Consolas, monospace;
+	font-size: 0.78rem;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+.current-project-description {
+	font-size: 1.02rem;
+	line-height: 1.8;
+	color: #d7e7f3;
+	margin: 0;
+	max-width: 68ch;
+}
+
+.current-project-description strong {
+	color: var(--accent-2);
+	font-weight: 600;
+}
+
+.current-project-media {
+	margin-top: 0.5rem;
+}
+
+@media (max-width: 700px) {
+	.current-project-inner {
+		padding: 2rem 0;
+	}
+
+	.current-project-media {
+		grid-template-columns: 1fr;
+	}
+}
+
 .hero-banner {
 	position: relative;
 	min-height: 100vh;
